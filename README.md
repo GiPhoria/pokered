@@ -1,3 +1,13 @@
+# Welcome to the World of Pokémon
+Hello there!
+My name is GiPhoria
+
+This repository is my own personal hack of the red/blue version of the series
+This was forked from pret/pokered.
+
+A world of endless hacking possibilities awaits! Let's go!
+
+
 # Pokémon Red and Blue [![Build Status][ci-badge]][ci]
 
 This is a disassembly of Pokémon Red and Blue.
