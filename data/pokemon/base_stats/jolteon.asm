@@ -1,6 +1,6 @@
 	db DEX_JOLTEON ; pokedex id
 
-	db  65,  65,  60, 130, 110
+	db  81,  81,  77, 130, 121
 	;   hp  atk  def  spd  spc
 
 	db ELECTRIC, ELECTRIC ; type

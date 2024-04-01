@@ -1,6 +1,6 @@
 	db DEX_CHARIZARD ; pokedex id
 
-	db  78,  84,  78, 100,  85
+	db  94, 100,  94, 100, 100
 	;   hp  atk  def  spd  spc
 
 	db FIRE, FLYING ; type

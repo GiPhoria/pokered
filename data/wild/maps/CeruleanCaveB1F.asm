@@ -14,7 +14,12 @@ IF DEF(_BLUE)
 ENDC
 	db 65, DITTO
 	db 63, DITTO
-	db 67, DITTO
+IF DEF(_RED)
+	db 67, SANDSLASH
+ENDC
+IF DEF(_BLUE)
+	db 67, ARBOK
+ENDC
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

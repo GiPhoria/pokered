@@ -10,11 +10,11 @@ PowerPlantWildMons:
 	db 35, MAGNETON
 IF DEF(_RED)
 	db 33, ELECTABUZZ
-	db 36, ELECTABUZZ
+	db 36, RAICHU
 ENDC
 IF DEF(_BLUE)
 	db 33, RAICHU
-	db 36, RAICHU
+	db 36, ELECTABUZZ
 ENDC
 	end_grass_wildmons
 

@@ -1,6 +1,6 @@
 	db DEX_BLASTOISE ; pokedex id
 
-	db  79,  83, 100,  78,  85
+	db  95,  99, 114,  78, 101
 	;   hp  atk  def  spd  spc
 
 	db WATER, WATER ; type

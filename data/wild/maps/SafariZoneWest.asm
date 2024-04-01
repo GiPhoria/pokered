@@ -1,5 +1,5 @@
 SafariZoneWestWildMons:
-	def_grass_wildmons 30 ; encounter rate
+	def_grass_wildmons 20 ; encounter rate
 IF DEF(_RED)
 	db 25, NIDORAN_M
 	db 26, DODUO
@@ -20,7 +20,7 @@ IF DEF(_BLUE)
 ENDC
 	db 31, VENOMOTH
 	db 26, TAUROS
-	db 28, KANGASKHAN
+	db  5, BULBASAUR
 	end_grass_wildmons
 
 	def_water_wildmons 0 ; encounter rate

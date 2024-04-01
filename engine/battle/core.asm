@@ -367,28 +367,34 @@ MainInBattleLoop:
 .specialMoveNotUsed
 	callfar SwitchEnemyMon
 .noLinkBattle
-	ld a, [wPlayerSelectedMove]
-	cp QUICK_ATTACK
-	jr nz, .playerDidNotUseQuickAttack
-	ld a, [wEnemySelectedMove]
-	cp QUICK_ATTACK
-	jr z, .compareSpeed  ; if both used Quick Attack
-	jp .playerMovesFirst ; if player used Quick Attack and enemy didn't
-.playerDidNotUseQuickAttack
-	ld a, [wEnemySelectedMove]
-	cp QUICK_ATTACK
-	jr z, .enemyMovesFirst ; if enemy used Quick Attack and player didn't
-	ld a, [wPlayerSelectedMove]
-	cp COUNTER
-	jr nz, .playerDidNotUseCounter
-	ld a, [wEnemySelectedMove]
-	cp COUNTER
-	jr z, .compareSpeed ; if both used Counter
-	jr .enemyMovesFirst ; if player used Counter and enemy didn't
-.playerDidNotUseCounter
-	ld a, [wEnemySelectedMove]
-	cp COUNTER
-	jr z, .playerMovesFirst ; if enemy used Counter and player didn't
+	; ld a, [wPlayerSelectedMove]
+	; cp QUICK_ATTACK
+	; jr nz, .playerDidNotUseQuickAttack
+	; ld a, [wEnemySelectedMove]
+	; cp QUICK_ATTACK
+	; jr z, .compareSpeed  ; if both used Quick Attack
+	; jp .playerMovesFirst ; if player used Quick Attack and enemy didn't
+; .playerDidNotUseQuickAttack
+	; ld a, [wEnemySelectedMove]
+	; cp QUICK_ATTACK
+	; jr z, .enemyMovesFirst ; if enemy used Quick Attack and player didn't
+	; ld a, [wPlayerSelectedMove]
+	; cp COUNTER
+	; jr nz, .playerDidNotUseCounter
+	; ld a, [wEnemySelectedMove]
+	; cp COUNTER
+	call HandleMovePriority
+ 	; c = player priority, e = enemy priority
+ 	ld a, c
+ 	cp e
+	; jr z, .compareSpeed ; if both used Counter
+	; jr .enemyMovesFirst ; if player used Counter and enemy didn't
+	jr c, .enemyMovesFirst
+ 	jr .playerMovesFirst
+; .playerDidNotUseCounter
+	; ld a, [wEnemySelectedMove]
+	; cp COUNTER
+	; jr z, .playerMovesFirst ; if enemy used Counter and player didn't
 .compareSpeed
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
@@ -466,6 +472,50 @@ MainInBattleLoop:
 	call DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
+
+HandleMovePriority:
+; This subroutine modifies registers a, hl, bc, and de
+; The player's priority value will be stored in register c and 
+; the enemy's priority value will be stored in register e.
+; These values will be compared after the 'ret' instruction is called
+
+        ld a, [wPlayerSelectedMove]
+        ld b, a
+        ld hl, PriorityMovesList
+        ld c, 7           ; no priority is 7
+.playerPriorityMoveLoop
+        ld a, [hli]       ; load the move ID from priority list and 
+                          ; increment address to the priority value address
+        cp b              ; compare with move being used
+        jr z, .playerUsingPriorityMove
+        inc a             ; if at end of list: -1 + 1 = 0xFF + 0x01 = 0
+        jr z, .noPlayerPriorityMove
+        inc hl            ; increment address to the next move
+        jr .playerPriorityMoveLoop
+.playerUsingPriorityMove
+        ld c, [hl]        ; get new priority value 
+.noPlayerPriorityMove
+
+; Now check enemy priority 
+        ld a, [wEnemySelectedMove]
+        ld d, a
+        ld hl, PriorityMovesList
+        ld e, 7           ; no priority is 7
+.enemyPriorityMoveLoop
+        ld a, [hli]       ; load the move ID from priority list and 
+                          ; increment address to the priority value address
+        cp d              ; compare with move being used
+        jr z, .enemyUsingPriorityMove
+        inc a             ; if at end of list: -1 + 1 = 0xFF + 0x01 = 0
+        jr z, .noEnemyPriorityMove
+        inc hl            ; increment address to the next move
+        jr .enemyPriorityMoveLoop
+.enemyUsingPriorityMove
+        ld e, [hl]        ; get new priority value 
+.noEnemyPriorityMove
+        ret
+
+INCLUDE "data/battle/priority_moves.asm"
 
 HandlePoisonBurnLeechSeed:
 	ld hl, wBattleMonHP
@@ -4613,8 +4663,8 @@ CriticalHitTest:
 	ld [wd0b5], a
 	call GetMonHeader
 	ld a, [wMonHBaseSpeed]
-	ld b, a
-	srl b                        ; (effective (base speed/2))
+	ld b, $14                     ; GIPHORIA: All pokemon will have 20/255 prob crit.
+	; srl b                        ; (effective (base speed/2))
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wPlayerMovePower
@@ -4632,12 +4682,17 @@ CriticalHitTest:
 	bit GETTING_PUMPED, a        ; test for focus energy
 	jr nz, .focusEnergyUsed      ; bug: using focus energy causes a shift to the right instead of left,
 	                             ; resulting in 1/4 the usual crit chance
-	sla b                        ; (effective (base speed/2)*2)
-	jr nc, .noFocusEnergyUsed
-	ld b, $ff                    ; cap at 255/256
+	; sla b                        ; (effective (base speed/2)*2)
+	; jr nc, .noFocusEnergyUsed
+	; ld b, $ff                    ; cap at 255/256
 	jr .noFocusEnergyUsed
 .focusEnergyUsed
-	srl b
+    ld a, b
+	add $5f
+    ld b, a
+; GIPHORIA: add 95/255 prob when on Focus Energy buff to make it 115/255 crit
+;If FE + HCM crit prob will be 210/255.
+; srl b
 .noFocusEnergyUsed
 	ld hl, HighCriticalMoves     ; table of high critical hit moves
 .Loop
@@ -4646,16 +4701,21 @@ CriticalHitTest:
 	jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
 	inc a                        ; move on to the next move, FF terminates loop
 	jr nz, .Loop                 ; check the next move in HighCriticalMoves
-	srl b                        ; /2 for regular move (effective (base speed / 2))
+	; srl b                        ; /2 for regular move (effective (base speed / 2))
 	jr .SkipHighCritical         ; continue as a normal move
 .HighCritical
-	sla b                        ; *2 for high critical hit moves
-	jr nc, .noCarry
-	ld b, $ff                    ; cap at 255/256
-.noCarry
-	sla b                        ; *4 for high critical move (effective (base speed/2)*8))
-	jr nc, .SkipHighCritical
-	ld b, $ff
+    ld a, b
+	add $5f
+    ld b, a                   
+; GIPHORIA: add 95/255 prob when using High Crit Move buff to make it 115/255 crit
+;If FE + HCM crit prob will be 210/255.
+	; sla b                        ; *2 for high critical hit moves
+	; jr nc, .noCarry
+	; ld b, $ff                    ; cap at 255/256
+; .noCarry
+	; sla b                        ; *4 for high critical move (effective (base speed/2)*8))
+	; jr nc, .SkipHighCritical
+	; ld b, $ff
 .SkipHighCritical
 	call BattleRandom            ; generates a random value, in "a"
 	rlc a

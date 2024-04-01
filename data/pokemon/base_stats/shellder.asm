@@ -1,6 +1,6 @@
 	db DEX_SHELLDER ; pokedex id
 
-	db  30,  65, 100,  40,  45
+	db  43,  75, 107,  40,  56
 	;   hp  atk  def  spd  spc
 
 	db WATER, WATER ; type

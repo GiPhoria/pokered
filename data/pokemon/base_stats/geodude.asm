@@ -1,6 +1,6 @@
 	db DEX_GEODUDE ; pokedex id
 
-	db  40,  80, 100,  20,  30
+	db  52,  89, 107,  20,  43
 	;   hp  atk  def  spd  spc
 
 	db ROCK, GROUND ; type

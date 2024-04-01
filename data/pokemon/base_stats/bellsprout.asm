@@ -1,6 +1,6 @@
 	db DEX_BELLSPROUT ; pokedex id
 
-	db  50,  75,  35,  40,  70
+	db  63,  85,  49,  40,  81
 	;   hp  atk  def  spd  spc
 
 	db GRASS, POISON ; type

@@ -419,7 +419,7 @@ ViridianForestHiddenObjects:
 
 MtMoon3HiddenObjects:
 	hidden_object 18, 12, MOON_STONE, HiddenItems
-	hidden_object 33,  9, ETHER, HiddenItems
+	hidden_object 33,  9, MOON_STONE, HiddenItems
 	db -1 ; end
 
 IndigoPlateauHiddenObjects:
@@ -639,7 +639,7 @@ Route17HiddenObjects:
 
 UndergroundPathNsHiddenObjects:
 	hidden_object  3,  4, FULL_RESTORE, HiddenItems
-	hidden_object  4, 34, X_SPECIAL, HiddenItems
+	hidden_object  4, 34, MOON_STONE, HiddenItems
 	db -1 ; end
 
 UndergroundPathWeHiddenObjects:

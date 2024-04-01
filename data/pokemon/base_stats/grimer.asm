@@ -1,6 +1,6 @@
 	db DEX_GRIMER ; pokedex id
 
-	db  80,  80,  50,  25,  40
+	db  88,  88,  61,  25,  52
 	;   hp  atk  def  spd  spc
 
 	db POISON, POISON ; type

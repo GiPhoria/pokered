@@ -1,6 +1,6 @@
 	db DEX_FLAREON ; pokedex id
 
-	db  65, 130,  60,  65, 110
+	db  82, 140,  78,  65, 122
 	;   hp  atk  def  spd  spc
 
 	db FIRE, FIRE ; type

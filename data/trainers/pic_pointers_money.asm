@@ -21,24 +21,24 @@ TrainerPicAndMoneyPointers::
 	pic_money EngineerPic,     5000
 	pic_money JugglerPic,      3500
 	pic_money FisherPic,       3500
-	pic_money SwimmerPic,       500
+	pic_money SwimmerPic,      2000
 	pic_money CueBallPic,      2500
 	pic_money GamblerPic,      7000
 	pic_money BeautyPic,       7000
-	pic_money PsychicPic,      1000
+	pic_money PsychicPic,      6000
 	pic_money RockerPic,       2500
 	pic_money JugglerPic,      3500
 	pic_money TamerPic,        4000
 	pic_money BirdKeeperPic,   2500
-	pic_money BlackbeltPic,    2500
-	pic_money Rival1Pic,       3500
+	pic_money BlackbeltPic,    3500
+	pic_money Rival1Pic,       5000
 	pic_money ProfOakPic,      9900
 	pic_money ChiefPic,        3000
 	pic_money ScientistPic,    5000
 	pic_money GiovanniPic,     9900
 	pic_money RocketPic,       3000
-	pic_money CooltrainerMPic, 3500
-	pic_money CooltrainerFPic, 3500
+	pic_money CooltrainerMPic, 5500
+	pic_money CooltrainerFPic, 5500
 	pic_money BrunoPic,        9900
 	pic_money BrockPic,        9900
 	pic_money MistyPic,        9900
@@ -48,7 +48,7 @@ TrainerPicAndMoneyPointers::
 	pic_money BlainePic,       9900
 	pic_money SabrinaPic,      9900
 	pic_money GentlemanPic,    7000
-	pic_money Rival2Pic,       6500
+	pic_money Rival2Pic,       7500
 	pic_money Rival3Pic,       9900
 	pic_money LoreleiPic,      9900
 	pic_money ChannelerPic,    3000

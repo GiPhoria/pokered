@@ -1,6 +1,6 @@
 	db DEX_DODRIO ; pokedex id
 
-	db  60, 110,  70, 100,  60
+	db  83, 125,  91, 100,  83
 	;   hp  atk  def  spd  spc
 
 	db NORMAL, FLYING ; type

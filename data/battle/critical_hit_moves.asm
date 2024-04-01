@@ -3,4 +3,6 @@ HighCriticalMoves:
 	db RAZOR_LEAF
 	db CRABHAMMER
 	db SLASH
+	db CUT
+	db RAZOR_WIND
 	db -1 ; end

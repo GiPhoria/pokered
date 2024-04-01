@@ -1,6 +1,6 @@
 	db DEX_WEEPINBELL ; pokedex id
 
-	db  65,  90,  50,  55,  85
+	db  77, 100,  64,  55,  95
 	;   hp  atk  def  spd  spc
 
 	db GRASS, POISON ; type

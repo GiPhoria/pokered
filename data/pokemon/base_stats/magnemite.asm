@@ -1,6 +1,6 @@
 	db DEX_MAGNEMITE ; pokedex id
 
-	db  25,  35,  70,  45,  95
+	db  41,  49,  81,  45, 104
 	;   hp  atk  def  spd  spc
 
 	db ELECTRIC, ELECTRIC ; type

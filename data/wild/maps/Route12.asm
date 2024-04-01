@@ -9,8 +9,8 @@ IF DEF(_RED)
 	db 26, VENONAT
 	db 26, ODDISH
 	db 27, PIDGEY
-	db 28, GLOOM
 	db 30, GLOOM
+	db 28, BELLSPROUT
 ENDC
 IF DEF(_BLUE)
 	db 24, BELLSPROUT
@@ -21,8 +21,8 @@ IF DEF(_BLUE)
 	db 26, VENONAT
 	db 26, BELLSPROUT
 	db 27, PIDGEY
-	db 28, WEEPINBELL
 	db 30, WEEPINBELL
+	db 28, ODDISH
 ENDC
 	end_grass_wildmons
 

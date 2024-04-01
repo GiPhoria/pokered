@@ -1,6 +1,6 @@
 	db DEX_KABUTO ; pokedex id
 
-	db  30,  80,  90,  55,  45
+	db  39,  86,  96,  55,  53
 	;   hp  atk  def  spd  spc
 
 	db ROCK, WATER ; type

@@ -1,6 +1,6 @@
 	db DEX_GLOOM ; pokedex id
 
-	db  60,  65,  70,  40,  85
+	db  77,  81,  85,  40,  99
 	;   hp  atk  def  spd  spc
 
 	db GRASS, POISON ; type

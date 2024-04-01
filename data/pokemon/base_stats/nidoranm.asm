@@ -1,6 +1,6 @@
 	db DEX_NIDORAN_M ; pokedex id
 
-	db  46,  57,  40,  50,  40
+	db  65,  75,  60,  50,  60
 	;   hp  atk  def  spd  spc
 
 	db POISON, POISON ; type
