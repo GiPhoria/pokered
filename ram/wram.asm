@@ -447,6 +447,11 @@ wEnemySelectedMove:: db
 
 wLinkBattleRandomNumberListIndex:: db
 
+; number of times that AI has used an item
+wAIItemUses:: db
+
+	ds 0
+
 ; number of times remaining that AI action can occur
 wAICount:: db
 

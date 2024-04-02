@@ -302,8 +302,8 @@ IvysaurEvosMoves:
 	db EVOLVE_LEVEL, 32, VENUSAUR
 	db 0
 ; Learnset
-	db 7, LEECH_SEED
-	db 13, VINE_WHIP
+	db 6, VINE_WHIP
+	db 12, LEECH_SEED
 	db 22, POISONPOWDER
 	db 30, RAZOR_LEAF
 	db 38, GROWTH
@@ -532,8 +532,8 @@ BlastoiseEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 8, BUBBLE
-	db 15, WATER_GUN
+	db 6, BUBBLE
+	db 16, WATER_GUN
 	db 24, BITE
 	db 31, WITHDRAW
 	db 42, SKULL_BASH
@@ -1146,7 +1146,6 @@ DratiniEvosMoves:
 	db 20, AGILITY
 	db 30, SLAM
 	db 40, DRAGON_RAGE
-	db 50, HYPER_BEAM
 	db 0
 
 DragonairEvosMoves:
@@ -1819,8 +1818,8 @@ BulbasaurEvosMoves:
 	db EVOLVE_LEVEL, 16, IVYSAUR
 	db 0
 ; Learnset
-	db 7, LEECH_SEED
-	db 13, VINE_WHIP
+	db 6, VINE_WHIP
+	db 12, LEECH_SEED
 	db 20, POISONPOWDER
 	db 27, RAZOR_LEAF
 	db 34, GROWTH
@@ -1832,8 +1831,8 @@ VenusaurEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 7, LEECH_SEED
-	db 13, VINE_WHIP
+	db 6, VINE_WHIP
+	db 12, LEECH_SEED
 	db 22, POISONPOWDER
 	db 30, RAZOR_LEAF
 	db 43, GROWTH
@@ -2064,8 +2063,8 @@ SquirtleEvosMoves:
 	db EVOLVE_LEVEL, 16, WARTORTLE
 	db 0
 ; Learnset
-	db 8, BUBBLE
-	db 15, WATER_GUN
+	db 6, BUBBLE
+	db 16, WATER_GUN
 	db 22, BITE
 	db 28, WITHDRAW
 	db 35, SKULL_BASH
@@ -2090,8 +2089,8 @@ WartortleEvosMoves:
 	db EVOLVE_LEVEL, 36, BLASTOISE
 	db 0
 ; Learnset
-	db 8, BUBBLE
-	db 15, WATER_GUN
+	db 6, BUBBLE
+	db 16, WATER_GUN
 	db 24, BITE
 	db 31, WITHDRAW
 	db 39, SKULL_BASH

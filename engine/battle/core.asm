@@ -387,7 +387,7 @@ MainInBattleLoop:
  	; c = player priority, e = enemy priority
  	ld a, c
  	cp e
-	; jr z, .compareSpeed ; if both used Counter
+    jr z, .compareSpeed ; if both used Counter
 	; jr .enemyMovesFirst ; if player used Counter and enemy didn't
 	jr c, .enemyMovesFirst
  	jr .playerMovesFirst
@@ -612,7 +612,7 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 	rr c
 	srl b
 	rr c
-	srl c
+	; srl c
 	srl c         ; c = max HP/16 (assumption: HP < 1024)
 	ld a, c
 	and a
@@ -4032,16 +4032,28 @@ CheckForDisobedience:
 	bit BIT_EARTHBADGE, [hl]
 	ld a, 101
 	jr nz, .next
+	bit BIT_VOLCANOBADGE, [hl]
+	ld a, 55
+	jr nz, .next
 	bit BIT_MARSHBADGE, [hl]
-	ld a, 70
+	ld a, 50
+	jr nz, .next
+	bit BIT_SOULBADGE, [hl]
+	ld a, 45
 	jr nz, .next
 	bit BIT_RAINBOWBADGE, [hl]
-	ld a, 50
+	ld a, 40
+	jr nz, .next
+	bit BIT_THUNDERBADGE, [hl]
+	ld a, 35
 	jr nz, .next
 	bit BIT_CASCADEBADGE, [hl]
 	ld a, 30
 	jr nz, .next
-	ld a, 10
+	bit BIT_BOULDERBADGE, [hl]
+	ld a, 25
+	jr nz, .next
+	ld a, 15
 .next
 	ld b, a
 	ld c, a
@@ -4843,7 +4855,8 @@ ApplyAttackToEnemyPokemon:
 ; Psywave
 	ld a, [hl]
 	ld b, a
-	srl a
+	; srl a  ;comenting make b = level * 2
+	ld a, $32 ; makes b at least 50, then b = 50 + level
 	add b
 	ld b, a ; b = level * 1.5
 ; loop until a random number in the range [1, b) is found
