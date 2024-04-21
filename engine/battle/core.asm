@@ -4020,7 +4020,8 @@ CheckForDisobedience:
 	call AddNTimes
 	ld a, [wPlayerID]
 	cp [hl]
-	jr nz, .monIsTraded
+	; jr nz, .monIsTraded
+	jr .monIsTraded ; GIPHORIA: always check for disobedience
 	inc hl
 	ld a, [wPlayerID + 1]
 	cp [hl]
@@ -4051,9 +4052,9 @@ CheckForDisobedience:
 	ld a, 30
 	jr nz, .next
 	bit BIT_BOULDERBADGE, [hl]
-	ld a, 25
+	ld a, 22
 	jr nz, .next
-	ld a, 15
+	ld a, 12
 .next
 	ld b, a
 	ld c, a

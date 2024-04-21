@@ -344,6 +344,10 @@ LearnMoveFromLevelUp:
 	cp b ; is the move learnt at the mon's current level?
 	ld a, [hli] ; move ID
 	jr nz, .learnSetLoop
+	
+;the move can indeed be learned at this level
+.confirmlearnmove
+	push hl	
 	ld d, a ; ID of move to learn
 	ld a, [wMonDataLocation]
 	and a
@@ -361,7 +365,7 @@ LearnMoveFromLevelUp:
 .checkCurrentMovesLoop ; check if the move to learn is already known
 	ld a, [hli]
 	cp d
-	jr z, .done ; if already known, jump
+	jr z, .movesloop_done ; if already known, jump
 	dec b
 	jr nz, .checkCurrentMovesLoop
 	ld a, d
@@ -370,6 +374,11 @@ LearnMoveFromLevelUp:
 	call GetMoveName
 	call CopyToStringBuffer
 	predef LearnMove
+.movesloop_done
+	pop hl
+	jr .learnSetLoop
+	
+	
 .done
 	ld a, [wcf91]
 	ld [wd11e], a

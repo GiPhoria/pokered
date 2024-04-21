@@ -647,7 +647,7 @@ MistyData:
 	db $FF, 20, STARYU, 25, STARMIE, 0
 
 LtSurgeData:
-	db $FF, 32, RAICHU, 0
+	db $FF, 35, RAICHU, 0
 
 ErikaData:
 	db $FF, 31, VICTREEBEL, 33, TANGELA, 35, VILEPLUME, 0
