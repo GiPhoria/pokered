@@ -58,9 +58,9 @@ Moves:
 	move GROWL,        ATTACK_DOWN1_EFFECT,          0, NORMAL,       100, 40
 	move ROAR,         SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,       100, 20
 	move SING,         SLEEP_EFFECT,                 0, NORMAL,        55, 15
-	move SUPERSONIC,   CONFUSION_EFFECT,             0, NORMAL,        55, 20
+	move SUPERSONIC,   CONFUSION_EFFECT,             0, NORMAL,        75, 20
 	move SONICBOOM,    SPECIAL_DAMAGE_EFFECT,        1, NORMAL,        90, 20
-	move DISABLE,      DISABLE_EFFECT,               0, NORMAL,        55, 20
+	move DISABLE,      DISABLE_EFFECT,               0, NORMAL,       100, 20
 	move ACID,         DEFENSE_DOWN_SIDE_EFFECT,    60, POISON,       100, 30
 	move EMBER,        BURN_SIDE_EFFECT1,           40, FIRE,         100, 25
 	move FLAMETHROWER, BURN_SIDE_EFFECT1,           95, FIRE,         100, 15
@@ -142,7 +142,7 @@ Moves:
 	move SWIFT,        SWIFT_EFFECT,                60, NORMAL,       100, 20
 	move SKULL_BASH,   CHARGE_EFFECT,              100, DRAGON,       100, 15
 	move SPIKE_CANNON, TWO_TO_FIVE_ATTACKS_EFFECT,  20, NORMAL,       100, 15
-	move CONSTRICT,    SPEED_DOWN_SIDE_EFFECT,      10, NORMAL,       100, 35
+	move CONSTRICT,    SPEED_DOWN_SIDE_EFFECT,      20, NORMAL,       100, 35
 	move AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC_TYPE, 100, 20
 	move KINESIS,      ACCURACY_DOWN1_EFFECT,        0, PSYCHIC_TYPE, 100, 15
 	move SOFTBOILED,   HEAL_EFFECT,                  0, NORMAL,       100, 10
